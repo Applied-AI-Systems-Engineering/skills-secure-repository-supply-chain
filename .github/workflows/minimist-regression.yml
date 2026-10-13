@@ -5,6 +5,7 @@ on:
     paths:
       - "code/src/AttendeeSite/package*.json"
       - ".github/scripts/minimist-regression.cjs"
+      - ".github/scripts/axios-regression.cjs"
       - ".github/workflows/minimist-regression.yml"
 permissions:
   contents: read
@@ -23,3 +24,6 @@ jobs:
         run: node .github/scripts/minimist-regression.cjs
         env:
           ENFORCE_PATCH: "true"
+
+      - name: Validate isolated axios bot update
+        run: node .github/scripts/axios-regression.cjs
