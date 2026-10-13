@@ -48,7 +48,9 @@ const path = require('node:path');
   const manifest = JSON.parse(fs.readFileSync('code/src/AttendeeSite/package.json'));
   if (process.env.ENFORCE_PATCH === 'true') {
     assert.equal(manifest.dependencies.minimist, '^' + expected.version);
-    assert.deepEqual(lock.dependencies.minimist, expected);
+    const entry = lock.dependencies?.minimist || lock.packages?.['node_modules/minimist'];
+    assert.ok(entry, 'minimist lock entry required');
+    assert.deepEqual({ version: entry.version, resolved: entry.resolved, integrity: entry.integrity }, expected);
     console.log('CHECKED_IN_PATCH_MATCHES_REGISTRY');
   }
   console.log('MINIMIST_REGRESSION_PASS: normal parsing + three prototype pollution cases; legacy app not installed or executed');
