@@ -4,7 +4,7 @@ const crypto = require('node:crypto');
 const cp = require('node:child_process');
 const path = require('node:path');
 (async () => {
-  const response = await fetch('https://registry.npmjs.org/minimist/latest');
+  const response = await fetch('https://registry.npmjs.org/minimist/1.2.8');
   assert.equal(response.status, 200);
   const metadata = await response.json();
   assert.match(metadata.version, /^1\./);
