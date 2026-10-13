@@ -19,4 +19,4 @@ jobs:
       - name: Verify registry integrity and run offline isolated regressions
         run: node .github/scripts/minimist-regression.cjs
         env:
-          ENFORCE_PATCH: "false"
+          ENFORCE_PATCH: "true"
