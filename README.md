@@ -1,3 +1,5 @@
+> **Attributed legacy training repository.** This GitHub Skills exercise retains known dependency findings (31 open at the recorded checkpoint). The application is unserved and not production ready. See [verified exercise evidence and limitations](completion-notes.md).
+
 <div align="center">
 
 # 🎉 Congratulations Khemology! 🎉
