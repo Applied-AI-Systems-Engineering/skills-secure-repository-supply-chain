@@ -1,0 +1,22 @@
+name: Isolated minimist remediation validation
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "code/src/AttendeeSite/package*.json"
+      - ".github/scripts/minimist-regression.cjs"
+      - ".github/workflows/minimist-regression.yml"
+permissions:
+  contents: read
+jobs:
+  isolated-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+      - name: Verify registry integrity and run offline isolated regressions
+        run: node .github/scripts/minimist-regression.cjs
+        env:
+          ENFORCE_PATCH: "false"
